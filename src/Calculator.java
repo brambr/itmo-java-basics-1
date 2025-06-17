@@ -36,7 +36,7 @@ public class Calculator {
         return x * y;
     }
 
-    public long division(long x, long y) {
+    public double division(long x, long y) {
         if (y != 0)
             return x / y;
         else {
@@ -54,7 +54,7 @@ public class Calculator {
         }
     }
 
-    public int division(int x, int y) {
+    public double division(int x, int y) {
         if (y != 0)
             return x / y;
         else {
