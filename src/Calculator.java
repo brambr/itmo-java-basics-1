@@ -38,7 +38,7 @@ public class Calculator {
 
     public double division(long x, long y) {
         if (y != 0)
-            return x / y;
+            return (double) x / (double)y;
         else {
             System.out.println(" Y не может быть равен 0");
             return 0;
@@ -56,7 +56,7 @@ public class Calculator {
 
     public double division(int x, int y) {
         if (y != 0)
-            return x / y;
+            return (double) x / (double)y;
         else {
             System.out.println(" Y не может быть равен 0");
             return 0;
