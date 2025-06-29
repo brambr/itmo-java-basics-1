@@ -1,3 +1,5 @@
+package task3;
+
 public class Tree {
  private double ageInYears;
  private boolean isAlive;
@@ -20,7 +22,7 @@ public class Tree {
 
     @Override
     public String toString() {
-        return "Tree{" +
+        return "task3.Tree{" +
                 "ageInYears=" + ageInYears +
                 ", isAlive=" + isAlive +
                 ", name='" + name + '\'' +

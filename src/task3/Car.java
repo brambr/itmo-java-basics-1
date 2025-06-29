@@ -1,3 +1,5 @@
+package task3;
+
 public class Car {
     private String color;
     private String name;

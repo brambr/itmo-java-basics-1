@@ -1,3 +1,5 @@
+package task3;
+
 public class Study {
     private String course;
 
