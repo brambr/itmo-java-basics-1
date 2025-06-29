@@ -13,8 +13,8 @@ public class RunTask3 {
 
     public void case32() {
         System.out.println("3.2");
-        Car car1 = new Car(1.2, "Красный");
-        Car car2 = new Car("Зеленый");
+        CarBasic car1 = new CarBasic(1.2, "Красный");
+        CarBasic car2 = new CarBasic("Зеленый");
 
         car1.setName("Ford Mustang");
         car2.setName("Ford RAM 1500");

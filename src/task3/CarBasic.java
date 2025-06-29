@@ -1,18 +1,18 @@
 package task3;
 
-public class Car {
+public class CarBasic {
     private String color;
     private String name;
     private double weightInTons;
 
-    public Car() {
+    public CarBasic() {
     }
 
-    public Car(String color) {
+    public CarBasic(String color) {
         this.color = color;
     }
 
-    public Car(double weightInTons, String color) {
+    public CarBasic(double weightInTons, String color) {
         this.weightInTons = weightInTons;
         this.color = color;
     }
