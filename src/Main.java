@@ -1,119 +1,210 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Main {
-    public static void main(String[] args) {
-        case11();
-        case12();
-        case13();
-        case14();
-        case15();
-        case16();
-    
-        case31();
-        case32();
-        case33();
-        case34();
+    public static void main(String[] args){
+        case411();
+        case412();
+        case413();
+        case414();
+        case415();
+        case416();
+        case421();
+        case422();
+        case423();
+        case424();
+        case425();
+    }
+
+    private static void case425() {
+        System.out.println("4.2.5 Сортировка массива методом слияния ");
+        int[] array=new int[]{2,5,1,3,6,4,2,7,8,2};
+        System.out.println("Basic array:"+Arrays.toString(array));
+        System.out.println("Sorted array:"+Arrays.toString(sortArray(array)));
 
     }
 
 
-    private static void case31() {
-        System.out.println("3.1");
-        Study study = new Study("Изучение Java-это просто!");
-        System.out.println(study.printCourse());
 
-    }
-
-    private static void case32() {
-        System.out.println("3.2");
-        Car car1 = new Car(1.2, "Красный");
-        Car car2 = new Car("Зеленый");
-
-        car1.setName("Ford Mustang");
-        car2.setName("Ford RAM 1500");
-        car2.setWeightInTons(2.4);
-
-        System.out.println(" Автомобиль #1 - параметры: \n" + car1.getAllParameters());
-        System.out.println(" Автомобиль #2 - параметры: \n"+ car2.getAllParameters());
-
-    }
-
-    private static void case33(){
-        System.out.println("3.3");
-        Building building1 = new Building();
-        Building building2 = new Building();
-
-        building1.setParameters("Лахта Центр",87, 2018, 1,29);
-        building2.setParameters("Дом Зингера",7, 1904, 1,1);
-
-        System.out.println("Параметры здания #1:");
-        building1.printAllParameters();
-        System.out.println(" Зданию "+building1.ageInYears()+" лет.");
-
-        System.out.println("Параметры здания #2:");
-        building2.printAllParameters();
-        System.out.println(" Зданию "+building2.ageInYears()+" лет.");
-    }
-    private static void case34() {
-        System.out.println("3.4 ");
-        Tree tree1=new Tree();
-        Tree tree2 = new Tree("Ива", 5.5);
-        Tree tree3 =new Tree("Дуб", 250d, true);
-
-        System.out.println(" Дерево #1 - параметры:"+ tree1);
-        System.out.println(" Дерево #2 - параметры:"+ tree2);
-        System.out.println(" Дерево #3 - параметры:"+ tree3);
-
-    }
+    private static int [] sortArray(int[] array){
+        array=array ;
+        if (array==null) return null;
+        if (array.length<2) return array;
+        int []  arrayA;
+        int []  arrayB;
 
 
-       
-
-    public static void case11(){
-        System.out.println("1. \n Я\n хорошо \n знаю  \n Java. ");
-    }
-
-    public static void case12(){
-        System.out.println( "2.");
-        double result1=(46+10)*((double) 10 /3);
-        System.out.println( " (46+10)*(10/3)="+result1);
-        int result2 = 29 * 4 * -15;
-        System.out.println(" (29) * (4) * (-15) =" + result2);
-    }
-
-    public static void case13(){
-        int number= 10500;
-        double result = number/10d/10d;
-        System.out.println("3. \n (10500/10)/10 = "+result);
-    }
-
-    public static void case14(){
-        double result = 3.6*4.1*5.9;
-        System.out.println("4. \n 3.6*4.1*5.9 =" +result);
-    }
-
-    public static void case15(){
-        System.out.println("5. \n Пожалуйста введите целые числа, например 42, 100 и 125 по очереди");
-        Scanner scan = new Scanner(System.in);
-        int a= scan.nextInt();
-        int b= scan.nextInt();
-        int c= scan.nextInt();
-        System.out.println(" Вы ввели следующие цифры:\n "+ a+"\n "+b+"\n "+c);
-    }
-
-    public static void case16(){
-        System.out.println("6. \n Пожалуйста введите целое числo b:");
-        Scanner scan = new Scanner(System.in);
-        int b= scan.nextInt();
-        if (b%2==0) {
-            if (b>100){
-                System.out.println(" Число вне диапазона!");
-            }
-            else {
-                System.out.println(" Число b - четное");
-            }
+        if (array.length%2==0) {
+            arrayA= new int[array.length/2];
+            arrayB= new int[array.length/2];
         }
         else {
-            System.out.println(" Число b - нечетное");}
+            arrayA= new int[(array.length+1)/2];
+            arrayB= new int[array.length-arrayA.length];
+        }
+
+        for (int i = 0; i < arrayA.length; i++) arrayA[i]=array[i];
+        for (int i = 0; i < arrayB.length; i++) arrayB[i]=array[i+arrayA.length];
+
+        arrayA = sortArray(arrayA);
+        arrayB = sortArray(arrayB);
+        return mergeArrays(arrayA, arrayB);
+
+    }
+    private static int[] mergeArrays(int[] arrayA, int[] arrayB) {
+        int[] newArray = new int[arrayA.length + arrayB.length];
+        int i = 0, i1 = 0, i2 = 0;
+
+        while (i1 < arrayA.length && i2 < arrayB.length) newArray[i++] = arrayA[i1] < arrayB[i2] ? arrayA[i1++] : arrayB[i2++];
+        while (i1 < arrayA.length) newArray[i++] = arrayA[i1++];
+        while (i2 < arrayB.length) newArray[i++] = arrayB[i2++];
+        return newArray;
     }
 
+    private static void case424() {
+        System.out.println("4.2.4 Найти первое уникальное число в массиве");
+        int[] array = new int[]{1, 2, 3, 1, 2, 4};
+        int count;
+        for (int i : array) {
+            count = 0;
+            for (int j : array)
+                if (i == j) count++;
+            if (count== 1){
+                System.out.println(i+" является первым  уникальным числом  для массива");
+                break;
+            }
+        }
+    }
+
+
+    private static void case423() {
+        System.out.println("4.2.3 Замена первого и последнего элемента массива");
+        int[] array = new int[] {1,3,5,6,7,9,0};
+        System.out.println("   Basic array:"+Arrays.toString(array));
+        int temp = array[array.length-1];
+        array[array.length-1]=array[0];
+        array[0]=temp;
+        System.out.println("Modified array:"+Arrays.toString(array));
+    }
+
+    private static void case422() {
+        System.out.println("4.2.2 Ввод массива через консоль");
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("Array Length:");
+        int[] array= new int[scanner.nextInt()];
+        System.out.println("Numbers of array:");
+        for (int i = 0; i < array.length; i++) array[i]=scanner.nextInt();
+        System.out.println("Result:"+ Arrays.toString(array));
+
+
+
+    }
+
+    private static void case421() {
+        System.out.println("4.2.1 Проверка масива на возрастание");
+        int[] array=new int[]{-1,10,4,5,8,23};
+        boolean result= true;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i-1]> array[i]) result= false;
+        }
+        if (result) System.out.println("Ok");
+        else System.out.println("Please try again");
+    }
+
+    private static void case416() {
+        System.out.println("4.1.6 Проверка наличия в массиве значений 1 или 3");
+        int[] array=new int[]{3,-3,7,4,5,4,3};
+        boolean result=false;
+        for(int i:array){
+            if(i==1||i==3) result =true;
+        }
+        if (result) System.out.println("Массив содержит значения  1 или 3");
+        else System.out.println("Массив содержит значения  1 или 3");
+    }
+
+    private static void case415() {
+        System.out.println("4.1.5 Проверка -  равняется ли 3-м первый и последний элемент массива:" );
+        int[] array=new int[]{3,-3,7,4,5,4,3};
+        System.out.println("array="+Arrays.toString(array));
+        if (array[0]==3 && array[array.length-1]==3) System.out.println("true");
+        else System.out.println("false");
+
+    }
+
+    private static void case414() {
+        int firstNumber;
+        int secondNumber;
+        int thirdNumber;
+        boolean result;
+
+        System.out.println("4.1.4  Проверка на то что второе число больше превого и меньше третьего");
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Введите первое число:");
+        firstNumber = reader.nextInt();
+        System.out.print("Введите второе число:");
+        secondNumber = reader.nextInt();
+        System.out.print("Введите третье число:");
+        thirdNumber = reader.nextInt();
+
+        if(firstNumber<secondNumber&&secondNumber<thirdNumber) result= true;
+        else result = false;
+        System.out.println("Результат:" + result);
+
+    }
+
+    private static void case413() {
+        int firstNumber;
+        int secondNumber;
+        int thirdNumber;
+        boolean result;
+
+        System.out.println("4.1.3 Вычисление суммы двух целых чисел и проверка их равенства третьему");
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Введите первое число:");
+        firstNumber = reader.nextInt();
+        System.out.print("Введите второе число:");
+        secondNumber = reader.nextInt();
+        System.out.print("Введите третье число:");
+        thirdNumber = reader.nextInt();
+
+        if((firstNumber+secondNumber)==thirdNumber) result= true;
+        else result = false;
+        System.out.println("Результат:" + result);
+
+    }
+
+
+    public static void case412() {
+        System.out.println("4.1.2 Найти число делящеяся на 3 и на 5:");
+        StringBuilder result = new StringBuilder();
+        int[] array = new int[100];
+        for (int i = 0; i < 100; i++) {
+            array[i] = i+1;
+        }
+        for (Integer i : array) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                result.append("Число ").append(i.toString()).append(" делится на 3 и на 5.").append("\n");
+            } else {
+
+                if (i % 3 == 0) {
+                    result.append("Число ").append(i.toString()).append(" делится на 3 ").append("\n");
+                } else {
+                    if (i % 5 == 0) {
+                        result.append("Число ").append(i.toString()).append(" делится на 5 ").append("\n");
+                    }
+                }
+            }
+        }
+        System.out.println(result);
+    }
+
+    public static void case411(){
+        System.out.println("4.1.1 Вывести все нечетные числа в диапазоне от 1-го до 99");
+        for (int i = 1; i < 100; i++) {
+            if (i%2!= 0) System.out.println(i);
+        }
+
+    }
 }
